@@ -68,6 +68,10 @@ const App = () => {
     clearForm();
   };
 
+  const handlePokemonCardClick = (pokemon) => {
+    console.log(pokemon);
+  };
+
   return (
     <>
       <Grid item xs={12} sx={{ backgroundColor: "#CE3F3A", mb: 3 }}>
@@ -80,7 +84,10 @@ const App = () => {
             <Grid container spacing={2}>
               {pokedex.map((pokemon, i) => (
                 <Grid item xs={3} sm={3} md={3} lg={3} key={i}>
-                  <PokemonCard pokemon={pokemon} />
+                  <PokemonCard
+                    pokemon={pokemon}
+                    handlePokemonCardClick={handlePokemonCardClick}
+                  />
                 </Grid>
               ))}
             </Grid>

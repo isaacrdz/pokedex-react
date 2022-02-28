@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, Paper, Typography } from "@mui/material";
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, handlePokemonCardClick }) => {
   const { no, name, pokemonType, image } = pokemon;
   return (
-    <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+    <Box
+      onClick={() => handlePokemonCardClick(pokemon)}
+      style={{ display: "flex", justifyContent: "flex-start" }}
+    >
       <Paper style={{ padding: "1em" }}>
         <img src={image} style={{ width: "100%", objectFit: "cover" }} />
 
