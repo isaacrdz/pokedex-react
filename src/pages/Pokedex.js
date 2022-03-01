@@ -73,10 +73,6 @@ const Pokedex = () => {
   };
   return (
     <>
-      <Grid item xs={12} sx={{ backgroundColor: "#CE3F3A", mb: 3 }}>
-        <Typography sx={{ color: "white", p: 1 }}>Pokedex</Typography>
-      </Grid>
-
       <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={8}>
