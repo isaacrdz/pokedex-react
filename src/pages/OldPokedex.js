@@ -59,10 +59,10 @@ const OldPokedex = () => {
     <>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid item xs={8}>
+          <Grid item xs={12}>
             <Grid container spacing={2}>
               {pokedex.map((pokemon, i) => (
-                <Grid item xs={3} sm={3} md={3} lg={3} key={i}>
+                <Grid item xs={12} sm={3} md={3} lg={2} key={i}>
                   <OldPokemonCard
                     i={i}
                     pokemon={pokemon}
