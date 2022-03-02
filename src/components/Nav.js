@@ -28,6 +28,14 @@ const Nav = () => {
                 <Typography sx={{ color: "white", p: 1 }}>Pokedex</Typography>
               </Link>
             </Box>
+
+            <Box>
+              <Link to="/oldpokedex" style={{ textDecoration: "none" }}>
+                <Typography sx={{ color: "white", p: 1 }}>
+                  Old Pokedex
+                </Typography>
+              </Link>
+            </Box>
           </Box>
         </Grid>
       </Container>

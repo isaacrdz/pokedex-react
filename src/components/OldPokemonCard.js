@@ -2,8 +2,9 @@ import React from "react";
 import { Box, Paper, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const PokemonCard = ({ pokemon, handlePokemonCardClick, i }) => {
-  const { no, name, pokemonType, image } = pokemon;
+const OldPokemonCard = ({ pokemon, i }) => {
+  const { no, name, pokemonType } = pokemon;
+
   return (
     <Link to={`/pokemon/${name}`}>
       <Box
@@ -14,12 +15,14 @@ const PokemonCard = ({ pokemon, handlePokemonCardClick, i }) => {
         }}
       >
         <Paper style={{ padding: "1em" }}>
-          <img src={image} style={{ width: "100%", objectFit: "cover" }} />
+          <img
+            src={require(`../pokemons/${i + 1}.png`)}
+            style={{ width: "100%", height: "130px", objectFit: "cover" }}
+          />
 
           <Box textAlign={"center"}>
-            <Typography>#{no}</Typography>
-            <Typography>{name}</Typography>
-            <Typography>Type:{pokemonType}</Typography>
+            <Typography>#{i + 1}</Typography>
+            <Typography sx={{ textTransform: "capitalize" }}>{name}</Typography>
           </Box>
         </Paper>
       </Box>
@@ -27,4 +30,4 @@ const PokemonCard = ({ pokemon, handlePokemonCardClick, i }) => {
   );
 };
 
-export default PokemonCard;
+export default OldPokemonCard;
