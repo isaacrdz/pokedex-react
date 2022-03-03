@@ -20,7 +20,10 @@ const OldPokemonCard = ({ pokemon, i }) => {
 
         <Box textAlign={"center"}>
           <Typography>#{i + 1}</Typography>
-          <Link to={`/pokemon/${i + 1}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/oldpokedex/pokemon/${i + 1}`}
+            style={{ textDecoration: "none" }}
+          >
             <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
               {name}
             </Typography>
