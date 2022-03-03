@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import OldPokemonCard from "../components/OldPokemonCard";
+import axios from "axios";
 import {
   Container,
   Grid,
@@ -7,74 +9,36 @@ import {
   Button,
   Box,
 } from "@mui/material";
-import OldPokemonCard from "../components/OldPokemonCard";
-import axios from "axios";
 
 const OldPokedex = () => {
-  const [pokedex, setPokedex] = useState([]);
+  const [pokedex, setPokedex] = useState(null);
 
-  const [pokemon, setPokemon] = useState({
-    name: "",
-    no: "",
-    pokemonType: "",
-    image: "",
-  });
-
-  const { name, no, pokemonType, image } = pokemon;
-
-  React.useEffect(() => {
+  useEffect(() => {
     const getPokemons = async () => {
-      const { data } = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=151"
+      const pokemons = await axios.get(
+        " https://pokeapi.co/api/v2/pokemon?limit=151"
       );
 
-      setPokedex(data.results);
+      setPokedex(pokemons.data.results);
     };
     getPokemons();
   }, []);
 
-  const handleOnChange = (e) => {
-    setPokemon({ ...pokemon, [e.target.name]: e.target.value });
-  };
-
-  const clearForm = () => {
-    setPokemon({
-      name: "",
-      no: "",
-      pokemonType: "",
-      image: "",
-    });
-  };
-
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    setPokedex([pokemon, ...pokedex]);
-    clearForm();
-  };
-
-  const handlePokemonCardClick = (pokemon) => {
-    console.log(pokemon);
-  };
   return (
-    <>
-      <Container maxWidth="lg">
-        <Grid container>
-          <Grid item xs={12}>
-            <Grid container spacing={2}>
-              {pokedex.map((pokemon, i) => (
+    <Container maxWidth="lg">
+      <Grid container>
+        <Grid item xs={12}>
+          <Grid container spacing={2}>
+            {pokedex &&
+              pokedex.map((pokemon, i) => (
                 <Grid item xs={12} sm={3} md={3} lg={2} key={i}>
-                  <OldPokemonCard
-                    i={i}
-                    pokemon={pokemon}
-                    handlePokemonCardClick={handlePokemonCardClick}
-                  />
+                  <OldPokemonCard pokemon={pokemon} i={i} />
                 </Grid>
               ))}
-            </Grid>
           </Grid>
         </Grid>
-      </Container>
-    </>
+      </Grid>
+    </Container>
   );
 };
 
